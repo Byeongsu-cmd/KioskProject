@@ -38,12 +38,14 @@ public class Main {
                 System.out.println("주문을 종료합니다.");
                 break;
             }
-            else if(select>0&&select<menu.size()){// 제한 조건을 주지 않으면 else 조건이 작동하지 않는다. 그래서 배열의 길이를 제한으로 조건문 작성했음.
+            else if(select>0&&select<=menu.size()){// 제한 조건을 주지 않으면 else 조건이 작동하지 않는다. 그래서 배열의 길이를 제한으로 조건문 작성했음.
                 int selectMenu=select-1; // 컴퓨터는 0부터 인식하기 때문에
                 //선언한 메뉴리스트를 활용하여 입력한 숫자보다 1이 작은 공간에 저장되어 있는 값을 불러온다.
-                System.out.print(menu.get(selectMenu).getNewName()); //선택한 메뉴 : 이름, 가격, 설명
+                /*System.out.print(menu.get(selectMenu).getNewName());
                 System.out.print(menu.get(selectMenu).getNewPrice());
-                System.out.println(menu.get(selectMenu).getNewDescription());
+                System.out.println(menu.get(selectMenu).getNewDescription());*/
+                menu.get(selectMenu).menuList(); //위의 3줄을 이 한줄로 줄일 수 있다.
+
             } else {
                 System.out.println("없는 메뉴입니다. 다시 입력해주세요.");
             }
