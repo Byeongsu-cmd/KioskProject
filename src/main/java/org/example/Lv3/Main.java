@@ -1,17 +1,22 @@
-package org.example;
+package org.example.Lv3;
 
-//TIP 코드를 <b>실행</b>하려면 <shortcut actionId="Run"/>을(를) 누르거나
-// 에디터 여백에 있는 <icon src="AllIcons.Actions.Execute"/> 아이콘을 클릭하세요.
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP 캐럿을 강조 표시된 텍스트에 놓고 <shortcut actionId="ShowIntentionActions"/>을(를) 누르면
-        // IntelliJ IDEA이(가) 수정을 제안하는 것을 확인할 수 있습니다.
-        System.out.printf("Hello and welcome!");
+        List<MenuItem> menuItemList = new ArrayList<>();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP <shortcut actionId="Debug"/>을(를) 눌러 코드 디버그를 시작하세요. 1개의 <icon src="AllIcons.Debugger.Db_set_breakpoint"/> 중단점을 설정해 드렸습니다
-            // 언제든 <shortcut actionId="ToggleLineBreakpoint"/>을(를) 눌러 중단점을 더 추가할 수 있습니다.
-            System.out.println("i = " + i);
-        }
+        // 리스트에 add라는 함수를 통해 메뉴를 등록합니다.
+        menuItemList.add(new MenuItem("1. ShackBurger   | W", 6.9, "| 토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
+        menuItemList.add(new MenuItem("2. SmokeShack    | W", 8.9, "| 베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거"));
+        menuItemList.add(new MenuItem("3. Cheeseburger  | W", 6.9, "| 포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
+        menuItemList.add(new MenuItem("4. Hamburger     | W", 5.4, "| 비프패티를 기반으로 야채가 들어간 기본버거"));
+
+
+        // 키오스크의 리스트가 메인의 리스트를 참조합니다.
+        Kiosk startKiosk = new Kiosk(menuItemList);
+        // 입력과 출력은 키오스크에서 합니다.
+        startKiosk.start();
     }
 }
