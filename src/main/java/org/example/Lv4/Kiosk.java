@@ -22,6 +22,7 @@ public class Kiosk {
             System.out.println("[ MAIN MENU ]");
             //메인 리스트 반복문으로 출력
             for (int i = 0; i < menuCategory.size(); i++) {
+                System.out.print(i + 1 + ". ");
                 menuCategory.get(i).printCategory();
             }
             System.out.println("0. 종료      | 종료");
@@ -41,16 +42,16 @@ public class Kiosk {
                 else if (0 < selectCategory && selectCategory <= menuCategory.size()) {
 
                     while (true) {
-                        switch(selectCategory) { //선택한 카테고리명을 상단에 표시합니다.
-                            case 1 :
+                        switch (selectCategory) { //선택한 카테고리명을 상단에 표시합니다.
+                            case 1:
                                 System.out.println("[ BURGERS MENU ]");
                                 break;
-                                case 2 :
-                                    System.out.println("[ DRINKS MENU ]");
-                                    break;
-                                    case 3 :
-                                        System.out.println("[ DESSERTS MENU ]");
-                                        break;
+                            case 2:
+                                System.out.println("[ DRINKS MENU ]");
+                                break;
+                            case 3:
+                                System.out.println("[ DESSERTS MENU ]");
+                                break;
                         }
                         // Menu가 가진 List<MenuItem>을 반복문을 활용하여 햄버거 메뉴 출력
                         menuCategory.get(selectCategory - 1).printMenu();
@@ -60,7 +61,7 @@ public class Kiosk {
                         System.out.println("원하시는 음식의 번호를 입력해주세요. :");
                         try {
                             int selectMenu = sc.nextInt();
-                            // 버거 메뉴 리스트에서 0을 입력시 메인으로 돌아갑니다.
+                            // 메뉴 리스트에서 0을 입력시 메인으로 돌아갑니다.
                             if (selectMenu == 0) {
                                 System.out.println("메인으로 돌아갑니다. ");
                                 break;
@@ -70,13 +71,13 @@ public class Kiosk {
                             List<MenuItem> menuList = menuCategory.get(selectCategory - 1).menuItems();
                             if (0 < selectMenu && selectMenu <= menuList.size()) {
                                 selectMenu = selectMenu - 1; //  -1를 하는 이유는 리스트는 0부터 저장하기 때문입니다.
-                                menuList.get(selectMenu).printMenuItem(); // 선택한 버거 정보 출력
-                            } else { //버거 메뉴 번호 예외 처리
+                                menuList.get(selectMenu).printMenuItem(); // 선택한 메뉴 정보 출력
+                            } else { //메뉴 번호 예외 처리
                                 System.out.println("올바른 메뉴의 번호를 입력 해주세요. : ");
                             }
                         } catch (Exception e) {
                             System.out.println("번호만 입력해주세요.");
-                            sc.next(); // 메인으로만 돌아감...
+                            sc.next(); // 선택했던 메뉴로 돌아갑니다.
                         }
                     }
                 } else {
@@ -84,7 +85,7 @@ public class Kiosk {
                 }
             } catch (Exception e) {
                 System.out.println("번호만 입력해주세요.");
-                sc.next(); // 메인으로만 돌아감...
+                sc.next(); // 메인으로 돌아갑니다.
             }
         }
     }

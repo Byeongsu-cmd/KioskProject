@@ -2,9 +2,9 @@ package org.example.Lv4;
 
 public class MenuItem {
     // 이름, 가격, 설명 필드 선언하여 관리
-    private final String menuName;
-    private final Double menuPrice;
-    private final String menuDescription;
+    private String menuName;
+    private Double menuPrice;
+    private String menuDescription;
 
     public MenuItem(String menuName, Double menuPrice, String menuDescription) {
         this.menuName = menuName;
@@ -24,7 +24,24 @@ public class MenuItem {
         return menuDescription;
     }
 
+    // 게터를 활용하여 출력 값을 설정하였습니다.
     public void printMenuItem() {
-        System.out.println(menuName + " W " + menuPrice + " " + menuDescription);
+        System.out.println(getMenuName() + " | W " + getMenuPrice() + " | " + getMenuDescription());
+    }
+
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
+    }
+    public void setMenuPrice(Double menuPrice) {
+        this.menuPrice = menuPrice;
+    }
+    public void setMenuDescription(String menuDescription) {
+        this.menuDescription = menuDescription;
+    }
+
+    public void resetMenu() {
+        menuName = " ";
+        menuPrice = 0.0;
+        menuDescription = " ";
     }
 }
