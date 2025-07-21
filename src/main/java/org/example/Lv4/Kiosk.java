@@ -41,26 +41,36 @@ public class Kiosk {
                 else if (0 < selectCategory && selectCategory <= menuCategory.size()) {
 
                     while (true) {
-                        System.out.println("[ BURGERS MENU ]");
+                        switch(selectCategory) { //선택한 카테고리명을 상단에 표시합니다.
+                            case 1 :
+                                System.out.println("[ BURGERS MENU ]");
+                                break;
+                                case 2 :
+                                    System.out.println("[ DRINKS MENU ]");
+                                    break;
+                                    case 3 :
+                                        System.out.println("[ DESSERTS MENU ]");
+                                        break;
+                        }
                         // Menu가 가진 List<MenuItem>을 반복문을 활용하여 햄버거 메뉴 출력
                         menuCategory.get(selectCategory - 1).printMenu();
                         System.out.println("0. 뒤로가기");
 
                         // 숫자 입력 받기
-                        System.out.println("원하시는 햄버거의 번호를 입력해주세요. :");
+                        System.out.println("원하시는 음식의 번호를 입력해주세요. :");
                         try {
-                            int selectBurger = sc.nextInt();
+                            int selectMenu = sc.nextInt();
                             // 버거 메뉴 리스트에서 0을 입력시 메인으로 돌아갑니다.
-                            if (selectBurger == 0) {
+                            if (selectMenu == 0) {
                                 System.out.println("메인으로 돌아갑니다. ");
                                 break;
                             }
                             // 입력 받은 숫자가 올바르다면 인덱스로 활용해서 Menu가 가지고 있는 List<MenuItem>에 접근하기
-                            // get(0)은 카테고리 버거의 리스트를 가르키는 것입니다.
-                            List<MenuItem> burgers = menuCategory.get(0).menuItems();
-                            if (0 < selectBurger && selectBurger <= burgers.size()) {
-                                selectBurger = selectBurger - 1; // 리스트는 0부터 저장하기 때문에
-                                burgers.get(selectBurger).printMenuItem(); // 선택한 버거 정보 출력
+                            // get(selectCategory - 1)은 선택한 카테고리 메뉴의 리스트를 가르키는 것입니다. -1를 하는 이유는 리스트는 0부터 저장하기 때문입니다.
+                            List<MenuItem> menuList = menuCategory.get(selectCategory - 1).menuItems();
+                            if (0 < selectMenu && selectMenu <= menuList.size()) {
+                                selectMenu = selectMenu - 1; //  -1를 하는 이유는 리스트는 0부터 저장하기 때문입니다.
+                                menuList.get(selectMenu).printMenuItem(); // 선택한 버거 정보 출력
                             } else { //버거 메뉴 번호 예외 처리
                                 System.out.println("올바른 메뉴의 번호를 입력 해주세요. : ");
                             }
