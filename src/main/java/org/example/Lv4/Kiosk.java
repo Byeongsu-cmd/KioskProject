@@ -71,7 +71,7 @@ public class Kiosk {
                             List<MenuItem> menuList = menuCategory.get(selectCategory - 1).menuItems();
                             if (0 < selectMenu && selectMenu <= menuList.size()) {
                                 selectMenu = selectMenu - 1; //  -1를 하는 이유는 리스트는 0부터 저장하기 때문입니다.
-                                menuList.get(selectMenu).printMenuItem(); // 선택한 메뉴 정보 출력
+                                menuList.get(selectMenu).printMenuItem();// 선택한 메뉴 정보 출력
                             } else { //메뉴 번호 예외 처리
                                 System.out.println("올바른 메뉴의 번호를 입력 해주세요. : ");
                             }
@@ -80,6 +80,22 @@ public class Kiosk {
                             sc.next(); // 선택했던 메뉴로 돌아갑니다.
                         }
                     }
+                }
+                if (selectCategory == 999) { // 관리자 모드로 진입하여 새로운 메뉴를 추가할 수 있습니다.
+                    System.out.println("새로운 메뉴의 정보를 입력해주세요.");
+                    MenuItem newMenuItem = new MenuItem("", 0.0, ""); // 생성할 메뉴의 양식을 호출하였습니다.
+
+                    System.out.println("이름,가격,설명 순으로 입력해주세요.");
+                    String newMenuItemName = sc.next();
+                    newMenuItem.setMenuName(newMenuItemName);
+
+                    Double newMenuItemPrice = sc.nextDouble();
+                    newMenuItem.setMenuPrice(newMenuItemPrice);
+
+                    String newMenuItemDescription = sc.next();
+                    newMenuItem.setMenuDescription(newMenuItemDescription);
+
+                    newMenuItem.printMenuItem(); // 저장된 리스트의 결과 값 확인용 입니다.
                 } else {
                     System.out.println("오류: 올바른 번호를 입력해주세요. ");
                 }

@@ -28,7 +28,7 @@ public class Menu {
     // 메뉴 전체리스트 출력
     public void printMenu() {
         for (int i = 0; i < menuItems.size(); i++) {
-            System.out.print(i+1+".");
+            System.out.print(i + 1 + ".");
             menuItems.get(i).printMenuItem();
         }
     }

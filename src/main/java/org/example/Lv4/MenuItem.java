@@ -29,19 +29,16 @@ public class MenuItem {
         System.out.println(getMenuName() + " | W " + getMenuPrice() + " | " + getMenuDescription());
     }
 
+    // 신메뉴 추가를 할 때 사용할 세터를 작성하였습니다.
     public void setMenuName(String menuName) {
         this.menuName = menuName;
     }
+
     public void setMenuPrice(Double menuPrice) {
         this.menuPrice = menuPrice;
     }
+
     public void setMenuDescription(String menuDescription) {
         this.menuDescription = menuDescription;
-    }
-
-    public void resetMenu() {
-        menuName = " ";
-        menuPrice = 0.0;
-        menuDescription = " ";
     }
 }
