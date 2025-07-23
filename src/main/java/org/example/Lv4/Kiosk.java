@@ -53,7 +53,7 @@ public class Kiosk {
                                 System.out.println("[ DESSERTS MENU ]");
                                 break;
                         }
-                        // Menu가 가진 List<MenuItem>을 반복문을 활용하여 햄버거 메뉴 출력
+                        // Menu가 가진 List<MenuItem>을 반복문을 활용하여 메뉴 출력
                         menuCategory.get(selectCategory - 1).printMenu();
                         System.out.println("0. 뒤로가기");
 
