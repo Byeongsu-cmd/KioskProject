@@ -23,10 +23,6 @@ public class MenuItem {
         return menuItemDescription;
     }
 
-    public void printPrice(){
-        System.out.println(menuItemPrice);
-    }
-
     public void printMenuItem() {
         System.out.println(getMenuItemName() + " | W " + getMenuItemPrice() + " | " + getMenuItemDescription());
     }

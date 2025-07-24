@@ -22,46 +22,60 @@ public class Kiosk {
     public void start() {
 
         while (true) {
-            try {// 메뉴 카테고리 진입
-                System.out.println("아래의 메뉴를 보시고 번호를 입력해주세요.");
-                System.out.println("[ MAIN MENU ]");
-                for (int i = 0; i < menuList.size(); i++) { // 메뉴 카테고리의 전체 리스트를 출력하기 위한 반복문 메서드
-                    System.out.print(i + 1 + ". ");
-                    menuList.get(i).printCategory();
-                }
-                System.out.println("0. 종료      | 종료");
-                if (basket.size() != 0) {
-                    System.out.println("[ ORDER MENU ]"); // 장바구니
-                    System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.");
-                    System.out.println("5. Cancel       | 진행중인 주문을 취소합니다.");
-                    int basketItem = sc.nextInt(); // 장바구니 주문 확인용 입력 값
-                    if (basketItem == 4) {
+            System.out.println("아래의 메뉴를 보시고 번호를 입력해주세요.");
+            System.out.println("[ MAIN MENU ]");
+            for (int i = 0; i < menuList.size(); i++) { // 메뉴 카테고리의 전체 리스트를 출력하기 위한 반복문 메서드
+                System.out.print(i + 1 + ". ");
+                menuList.get(i).printCategory();
+            }
+            System.out.println("0. 종료      | 종료");
+            if (basket.size() > 0) {
+                System.out.println("[ ORDER MENU ]"); // 장바구니
+                System.out.println("4. Orders       | 장바구니를 확인 후 주문합니다.");
+                System.out.println("5. Cancel       | 진행중인 주문을 취소합니다.");
+            }
+            try {
+                int choice = sc.nextInt(); // 메뉴의 카테고리의 입력 값을 받는 메서드
+                if (basket.size() > 0) {
+                    if (choice == 4) {
                         System.out.println("아래와 같이 주문 하시겠습니까?");
                         System.out.println("[ Orders ]");
                         for (MenuItem menuItem : basket) {// 저장된 장바구니 리스트
                             menuItem.printMenuItem(); // 장바구니 리스트 출력 메서드
                         }
                         System.out.println("[ Total ]");
-                        for (MenuItem menuItem : basket) {// 총 금액 연산해주는 메서드
-                            System.out.print("W ");
-                            menuItem.printPrice(); // 연산 메서드 구현 필요!!
-                            break;
+                        System.out.print("W ");
+                        double total = 0.0;
+                        for (int i = 0; i < basket.size(); i++) {// 총 금액 연산해주는 메서드
+                            total += basket.get(i).getMenuItemPrice();
                         }
+                        System.out.println(total); // 금액 출력
                         System.out.println("1. 주문      2. 메뉴판");
                         int order = sc.nextInt();
                         if (order == 1) {
-                            System.out.println("주문이 완료되었습니다. 금액은 W ?? 입니다."); //최종 결제 메서드
+                            System.out.println("주문이 완료되었습니다. 금액은 W " + total + " 입니다."); //최종 결제 메서드
                             setBasket(new ArrayList<>()); // 장바구니 비워주는 메서드
-                        } else {
-                            continue;
+                            System.out.println("주문을 종료하시고 싶다면 0을 아니라면 그외의 번호를 입력해주세요.");
+                            int finishOrder = sc.nextInt(); // 입력 값을 지워주는 용도 겸 메인화면으로 다시 돌아가게 합니다.
+                            if (finishOrder == 0) {
+                                System.out.println("프로그램을 종료합니다.");
+                                break;
+                            }
+                            continue; // 잘못된 입력값을 입력해도 메인화면으로 이동합니다.
                         }
                     }
-                    if (basketItem == 5) {
+                    if (choice == 5) {
+                        System.out.println("주문을 취소하였습니다. ");
                         setBasket(new ArrayList<>());
+                        System.out.println("주문을 종료하시고 싶다면 0을 아니라면 그외의 번호를 입력해주세요.");
+                        int finishOrder = sc.nextInt(); // 입력 값을 지워주는 용도 겸 메인화면으로 다시 돌아가게 합니다.
+                        if (finishOrder == 0) {
+                            System.out.println("프로그램을 종료합니다.");
+                            break;
+                        }
+                        continue; // 잘못된 입력값을 입력해도 메인화면으로 이동합니다.
                     }
                 }
-                int choice = sc.nextInt(); // 메뉴의 카테고리의 입력 값을 받는 메서드
-
                 if (choice == 0) {
                     System.out.println("프로그램을 종료합니다.");
                     break;
